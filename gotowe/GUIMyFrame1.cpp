@@ -121,8 +121,6 @@ void GUIMyFrame1::open_file_click( wxCommandEvent& event )
 
 void GUIMyFrame1::save_file_click( wxCommandEvent& event )
 {
-	void GUIMyFrame1::save_file_click(wxCommandEvent& event)
-{
 	wxFileDialog saveFileDialog(this, _("Save converted TIFF file"), "", "", "TIFF files (*.tiff)|*.tiff", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 	if (saveFileDialog.ShowModal() == wxID_OK) {
 		std::string save_path = static_cast<std::string>(saveFileDialog.GetFilename());
@@ -137,7 +135,6 @@ void GUIMyFrame1::save_file_click( wxCommandEvent& event )
 	}
 }
 	
-}
 
 wxImage GUIMyFrame1::getImage(cv::Mat &result) { 
 	int w = result.cols;
