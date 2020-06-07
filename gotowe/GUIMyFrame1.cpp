@@ -10,7 +10,7 @@ MyFrame1( parent )
  this->SetBackgroundColour(wxColor(192, 192, 192));
 
  m_scrolledWindow->SetBackgroundColour(wxColor(192, 192, 192));
-
+ gamma_correction_slider->Disable();
  histogram->SetBackgroundColour(wxColor(255, 255, 255));
  histogram2->SetBackgroundColour(wxColor(255, 255, 255));
 
