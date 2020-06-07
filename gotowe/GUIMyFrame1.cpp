@@ -49,7 +49,10 @@ void GUIMyFrame1::conversion_8bit_click( wxCommandEvent& event )
 }
 
 void GUIMyFrame1::conversion_with_gamma_click(wxCommandEvent& event) {
-	gamma_correction_slider->Enable();
+	if (result.data)
+		gamma_correction_slider->Enable();
+	else
+		wxMessageBox(_("Prosze wczytac plik!"));
 }
 
 void GUIMyFrame1::calculateHistograms(wxImage &img, int rgb_count[256]) {
