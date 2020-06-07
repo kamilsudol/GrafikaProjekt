@@ -97,7 +97,7 @@ void GUIMyFrame1::generate_hist_img(wxImage &img, wxBitmap &bitmap, int count[25
 
 void GUIMyFrame1::open_file_click( wxCommandEvent& event )
 {	
-	wxFileDialog WxOpenFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("TIFF file (*.*)|*.*"), wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+	wxFileDialog WxOpenFileDialog(this, wxT("Choose a file"), wxT(""), wxT(""), wxT("TIFF file (*.tiff;*.tif)|*.tiff;*.tif"), wxFD_OPEN | wxFD_FILE_MUST_EXIST);
 
 	if (WxOpenFileDialog.ShowModal() == wxID_OK) {
 		image = cv::imread(static_cast<std::string>(WxOpenFileDialog.GetPath()), CV_LOAD_IMAGE_COLOR);
