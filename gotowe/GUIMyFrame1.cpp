@@ -121,20 +121,21 @@ void GUIMyFrame1::open_file_click( wxCommandEvent& event )
 
 void GUIMyFrame1::save_file_click( wxCommandEvent& event )
 {
-	//wxFileDialog saveFileDialog(this, _("Save converted TIFF file"), "", "", "TIFF files (*.tiff)|*.tiff", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
-	//std::string save_path = static_cast<std::string>(saveFileDialog.GetFilename());
-	//cv::imwrite(static_cast<std::string>(saveFileDialog.GetPath()), result);
-	//cv::imwrite("C:\Users\gruby\source\repos\GrafikaPatryk\GrafikaPatryk\masnoni.tiff", result);
-	//if (saveFileDialog.ShowModal() == wxID_OK) {
-		//cv::imwrite(save_path, result);
-	//}
-	if (result.data) {
-		cv::imwrite("converted.tiff", result);
-		wxMessageBox(_("Pomyslnie zapisano plik."));
+	void GUIMyFrame1::save_file_click(wxCommandEvent& event)
+{
+	wxFileDialog saveFileDialog(this, _("Save converted TIFF file"), "", "", "TIFF files (*.tiff)|*.tiff", wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+	if (saveFileDialog.ShowModal() == wxID_OK) {
+		std::string save_path = static_cast<std::string>(saveFileDialog.GetFilename());
+		
+		if (result.data) {
+			cv::imwrite(save_path, result);
+			wxMessageBox(_("Pomyslnie zapisano plik."));
+		}
+		else {
+			wxMessageBox(_("Brak pliku do zapisania!"));
+		}
 	}
-	else {
-		wxMessageBox(_("Brak pliku do zapisania!"));
-	}
+}
 	
 }
 
