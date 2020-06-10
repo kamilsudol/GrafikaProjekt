@@ -14,7 +14,6 @@ GUIMyFrame1::GUIMyFrame1(wxWindow* parent)
 	m_choice->Disable();
 	histogram->SetBackgroundColour(wxColor(255, 255, 255));
 	histogram2->SetBackgroundColour(wxColor(255, 255, 255));
-
 	Img_tmp = wxImage();
 }
 
@@ -69,8 +68,8 @@ void GUIMyFrame1::open_file_click(wxCommandEvent& event)
 	if (WxOpenFileDialog.ShowModal() == wxID_OK)
 	{
 		
-		//image_org = cv::imread(static_cast<std::string>(WxOpenFileDialog.GetPath()), CV_LOAD_IMAGE_COLOR);
-		image_org = cv::imread(static_cast<std::string>(WxOpenFileDialog.GetPath()), cv::IMREAD_COLOR);
+		image_org = cv::imread(static_cast<std::string>(WxOpenFileDialog.GetPath()), CV_LOAD_IMAGE_COLOR);
+		//image_org = cv::imread(static_cast<std::string>(WxOpenFileDialog.GetPath()), cv::IMREAD_COLOR);
 		if (!image_org.data)
 		{
 			wxMessageBox(_("Nie uda\u0142o si\u0119 za\u0142adowa\u0107 obrazka"));
