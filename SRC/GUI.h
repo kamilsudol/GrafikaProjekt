@@ -1,10 +1,3 @@
-///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version Dec  8 2017)
-// http://www.wxformbuilder.org/
-//
-// PLEASE DO *NOT* EDIT THIS FILE!
-///////////////////////////////////////////////////////////////////////////
-
 #ifndef __GUI_H__
 #define __GUI_H__
 
@@ -24,12 +17,6 @@
 #include <wx/frame.h>
 #include <wx/choice.h>
 
-///////////////////////////////////////////////////////////////////////////
-
-
-///////////////////////////////////////////////////////////////////////////////
-/// Class MyFrame1
-///////////////////////////////////////////////////////////////////////////////
 class MyFrame1 : public wxFrame 
 {
 	private:
@@ -50,8 +37,7 @@ public:
 		wxStaticText* m_staticText1;
 
 		int slid_size;
-		
-		// Virtual event handlers, overide them in your derived class
+
 		virtual void m_Window_update( wxUpdateUIEvent& event ) { event.Skip(); }
 		virtual void m_histogram_update( wxUpdateUIEvent& event ) { event.Skip(); }
 		virtual void m_histogram2_update( wxUpdateUIEvent& event ) { event.Skip(); }
@@ -68,4 +54,4 @@ public:
 	
 };
 
-#endif //__GUI_H__
+#endif

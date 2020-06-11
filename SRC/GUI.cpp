@@ -1,13 +1,4 @@
-///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version Dec  8 2017)
-// http://www.wxformbuilder.org/
-//
-// PLEASE DO *NOT* EDIT THIS FILE!
-///////////////////////////////////////////////////////////////////////////
-
 #include "GUI.h"
-
-///////////////////////////////////////////////////////////////////////////
 
 MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxFrame( parent, id, title, pos, size, style )
 {
@@ -80,7 +71,6 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	
 	this->Centre( wxBOTH );
 	
-	// Connect Events
 	m_Window->Connect( wxEVT_UPDATE_UI, wxUpdateUIEventHandler( MyFrame1::m_Window_update ), NULL, this );
 	conversion_8bit->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::conversion_8bit_click ), NULL, this );
 	conversion_with_gamma->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::conversion_with_gamma_click ), NULL, this );
@@ -102,7 +92,6 @@ MyFrame1::MyFrame1( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 MyFrame1::~MyFrame1()
 {
-	// Disconnect Events
 	m_Window->Disconnect( wxEVT_UPDATE_UI, wxUpdateUIEventHandler( MyFrame1::m_Window_update ), NULL, this );
 	conversion_8bit->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::conversion_8bit_click ), NULL, this );
 	conversion_with_gamma->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( MyFrame1::conversion_with_gamma_click ), NULL, this );
