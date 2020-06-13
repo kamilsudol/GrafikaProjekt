@@ -64,7 +64,6 @@ void GUIMyFrame1::open_file_click(wxCommandEvent& event)
 
 	if (WxOpenFileDialog.ShowModal() == wxID_OK)
 	{
-
 		image_org = cv::imread(static_cast<std::string>(WxOpenFileDialog.GetPath()), CV_LOAD_IMAGE_COLOR);
 		if (!image_org.data)
 		{
@@ -72,7 +71,6 @@ void GUIMyFrame1::open_file_click(wxCommandEvent& event)
 		}
 		else
 		{
-			m_choice->Enable();
 			gamma_correction_slider->Disable();
 			gamma_correction_slider->SetValue(slid_size / 2.);
 			result = image_org.clone();
