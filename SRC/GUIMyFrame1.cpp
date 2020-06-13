@@ -39,7 +39,6 @@ void GUIMyFrame1::Repaint()
 
 wxImage GUIMyFrame1::getImage(cv::Mat &result) 
 {
-
 	int w = result.cols;
 	int h = result.rows;
 	int size = w * h * 3 * sizeof(unsigned char);
@@ -52,7 +51,7 @@ wxImage GUIMyFrame1::getImage(cv::Mat &result)
 		case 3:
 		{
 			int mapping[] = { 0,2,1,1,2,0 }; // CV(BGR) to WX(RGB)
-			mixChannels(&result, 1, &cv2wx, 1, mapping, 3);
+			cv::mixChannels(&result, 1, &cv2wx, 1, mapping, 3);
 		} break;
 	}
 
@@ -205,15 +204,32 @@ void GUIMyFrame1::m_b_choice_click(wxCommandEvent& event)
 
 		if (m_choice->GetSelection()) 
 		{
-			for (int i = 0; i < size; i++) 
+			if (m_choice->GetSelection() == 1)
 			{
-				if (dataMat[i] < pow(2, m_choice->GetSelection() - 1)) 
+				for (int i = 0; i < size; i++)
 				{
-					dataMat[i] = pow(2, m_choice->GetSelection() - 1) - 1;
+					if (dataMat[i] < pow(2, m_choice->GetSelection() - 1))
+					{
+						dataMat[i] = pow(2, m_choice->GetSelection() - 1) - 1;
+					}
+					else if (dataMat[i] > pow(2, m_choice->GetSelection() + 7) - 1)
+					{
+						dataMat[i] = pow(2, m_choice->GetSelection() + 7) - 1;
+					}
 				}
-				else if (dataMat[i] > pow(2, m_choice->GetSelection() + 7) - 1) 
+			}
+			else
+			{
+				for (int i = 0; i < size; i++)
 				{
-					dataMat[i] = pow(2, m_choice->GetSelection() + 7) - 1;
+					if (dataMat[i] < pow(2, m_choice->GetSelection() - 1))
+					{
+						dataMat[i] = pow(2, m_choice->GetSelection() - 1);
+					}
+					else if (dataMat[i] > pow(2, m_choice->GetSelection() + 7) - 1)
+					{
+						dataMat[i] = pow(2, m_choice->GetSelection() + 7) - 1;
+					}
 				}
 			}
 		}
