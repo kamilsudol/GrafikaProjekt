@@ -192,6 +192,8 @@ cv::Mat &GUIMyFrame1::correctGamma(cv::Mat& img, double gamma)
 
 void GUIMyFrame1::m_b_choice_click(wxCommandEvent& event) 
 {
+	Img_tmp = getImage(image_org);
+	histogram_fun(histogram, Img_tmp);
 	gamma_correction_slider->Disable();
 	gamma_correction_slider->SetValue(slid_size / 2.);
 	if (result.data) 
