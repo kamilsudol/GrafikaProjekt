@@ -111,7 +111,7 @@ void GUIMyFrame1::conversion_8bit_click( wxCommandEvent& event )
 	{
 		histogram_fun(histogram, Img_tmp);
 		result = image_org.clone();
-		result.convertTo(result, CV_8UC1);
+		result.convertTo(result, CV_8UC3);
 		Img_tmp = getImage(result);
 		wxRect screen = m_Window->GetSize();
 		Img_tmp.Rescale(screen.GetWidth(), screen.GetHeight());
@@ -163,7 +163,7 @@ void GUIMyFrame1::gamma_correction_scroll(wxScrollEvent& event)
 		result = correctGamma(image_org, pow((gamma_correction_slider->GetMax() / 2. - val) / (slid_size / 10.) + 1., 2));
 	}
 
-	result.convertTo(result, CV_8UC1);
+	result.convertTo(result, CV_8UC3);
 	Org = wxImage(image_org.cols, image_org.rows, image_org.data, TRUE);
 	histogram_fun(histogram, Org);
 	Img_tmp = getImage(result);
@@ -177,7 +177,7 @@ cv::Mat &GUIMyFrame1::correctGamma(cv::Mat& img, double gamma)
 {
 	double inverse_gamma = 1.0 / gamma;
 
-	cv::Mat lut_data(1, 256, CV_8UC1);
+	cv::Mat lut_data(1, 256, CV_8UC3);
 	uchar * ptr = lut_data.ptr();
 	for (int i = 0; i < 256; i++) 
 	{
