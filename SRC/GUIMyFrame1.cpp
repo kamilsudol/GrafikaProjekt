@@ -50,7 +50,7 @@ wxImage GUIMyFrame1::getImage(cv::Mat &result)
 	{
 		case 3:
 		{
-			int mapping[] = { 0,2,1,1,2,0 }; // CV(BGR) to WX(RGB)
+			int mapping[] = { 0,2,1,1,2,0 };
 			cv::mixChannels(&result, 1, &cv2wx, 1, mapping, 3);
 		} break;
 	}
@@ -105,6 +105,8 @@ void GUIMyFrame1::save_file_click(wxCommandEvent& event)
 
 void GUIMyFrame1::conversion_8bit_click( wxCommandEvent& event )
 {
+	Img_tmp = getImage(image_org);
+	histogram_fun(histogram, Img_tmp);
 	gamma_correction_slider->Disable();
 	gamma_correction_slider->SetValue(slid_size/2.);
 	if (result.data) 
@@ -175,13 +177,11 @@ void GUIMyFrame1::gamma_correction_scroll(wxScrollEvent& event)
 
 cv::Mat &GUIMyFrame1::correctGamma(cv::Mat& img, double gamma) 
 {
-	double inverse_gamma = 1.0 / gamma;
-
-	cv::Mat lut_data(1, 256, CV_8UC3);
-	uchar * ptr = lut_data.ptr();
+	cv::Mat lut_data(1, 256, CV_8UC1);
+	uchar * data = lut_data.ptr();
 	for (int i = 0; i < 256; i++) 
 	{
-		ptr[i] = static_cast<int>((pow(static_cast<double>(i) / 255.0, inverse_gamma) * 255.0));
+		data[i] = static_cast<int>((pow(static_cast<double>(i) / 255.0, 1. / gamma) * 255.0));
 	}
 
 	cv::Mat *result = new cv::Mat;
